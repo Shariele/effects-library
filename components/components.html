@@ -1,0 +1,450 @@
+<?php
+
+function el_render_admin(){
+	?>
+	<div class="col-md-8">
+		<div class="row">
+			<h2><?php _e('Effects Library', 'el'); ?></h2>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<select id="effect-choice" name="category" class="form-control" required>
+					<option value="">Options</option>
+					<option value="customize">Customize event & effect</option>
+					<option value="special">Special</option>
+					<option value="text-high-light">Text highlight</option>
+				</select>
+			</div>
+			<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" id="comp-loading" class="waiting" style="display:none; margin-top:5px;" />
+		</div>
+
+		<div class="col-md-12" style="margin-top:15px" id="components">
+				
+		</div>
+
+		<div class="row" style="margin-top:10px">
+			<div class="col-md-6">
+				<div id="effects-result">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div style="margin-top:100px" class="col-md-4">
+		<div class="row">
+			<div class="col-md-12 effectDescription" style="display:none;">
+				<div class="row">
+					<div class="col-md-12">
+						<ins><strong><p class="text-center">Effect description</p></strong></ins>
+					</div>
+				</div>
+				<div id="information">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12 eventDescription" style="display:none;">
+				<div class="row">
+					<div class="col-md-12">
+						<ins><strong><p class="text-center">Event description</p></strong></ins>
+					</div>
+				</div>
+				<div id="eventInformation">
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php
+}
+
+/***
+*
+*
+***Main components***/
+
+function text_highlight_comp() {
+	?>
+	<div class="row">
+		<div class="col-md-4">
+			<label data-target="div-choice">Element to activate from</label>
+			<input type="text" id="div-choice" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+		</div>
+		<div class="col-md-4">
+			<label data-target="choice-color">Color</label>
+			<input type="text" id="choice-color" class="form-control" placeholder="Highlight color" value="" required>
+		</div>
+	</div>
+	<div class="row" style="margin-top:10px">
+		<div class="col-md-3">
+			<input type="submit" name="highlight-submit" id="highlight-submit" class="button-primary btn-large" value="<?php _e('Create Function', 'el'); ?>"/>
+			<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" id="func-loading" class="waiting" style="display:none;" />
+		</div>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	
+	<?php
+}
+
+function on_page_load_comp(){
+	?>
+	<div class="row">
+		<div class="col-md-2">
+			<label data-target="effect-choice-custom">Custom effect on event given</label>
+			<select id="effect-choice-custom" name="category" class="form-control" required>
+				<option value="">Choose an effect</option>
+				<option value="animate">Animate(Not working)</option>
+				<option value="hide">Hide(Not working)</option>
+				<option value="show">Show(Not working)</option>
+				<option value="slide-down">Slide Down(Not working)</option>
+				<option value="slide-up">Slide Up(Not working)</option>
+				<option value="toggle">Toggle (Hide/Show)(Not working)</option>
+				<option value="css">Css</option>
+				<option value="remove">Remove(Not working)</option>
+				<option value="empty">Emtpy(Not working)</option>
+				<option value="add">Add(Not working)</option>
+				<option value="scrollTo">Scroll To</option>
+			</select>
+		</div>
+		<div class="col-md-2">
+			<label data-target="div-choice">Element to activate from</label>
+			<input type="text" id="div-choice" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+		</div>
+	</div>
+	<div class="row">
+		<div id="customization-effects">
+			
+		</div>
+	</div>
+	<div class="row" style="margin-top:10px">
+		<div class="col-md-2">
+			<input type="submit" name="highlight-submit" id="highlight-submit" class="button-primary btn-large" value="<?php _e('Create Function', 'el'); ?>"/>
+			<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" id="func-loading" class="waiting" style="display:none;" />
+		</div>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function special_comp(){
+	?>
+	<div class="row">
+		<div class="col-md-4">
+			<label data-target="effect-choice-custom">Custom effect on event given</label>
+			<select id="effect-choice-custom" name="category" class="form-control" required>
+				<option value="">Choose an effect</option>
+				<option value="menu-change-fade-color-scroll-down">Menu fade to color on scroll down</option>
+			</select>
+		</div>
+		<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" id="sub-comp-loading" class="waiting" style="display:none; margin-top:32px;" />
+	</div>
+	<div style="margin-top:15px" id="customization-effects">
+		
+	</div>
+	<div class="row" style="margin-top:10px">
+		<div class="col-md-2">
+			<input type="submit" name="highlight-submit" id="highlight-submit" class="button-primary btn-large" value="<?php _e('Create Function', 'el'); ?>"/>
+			<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" id="func-loading" class="waiting" style="display:none;" />
+		</div>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function customize_custom_comp() {
+	?>
+	<div class="row">
+		<div class="col-md-4">
+			<label data-target="event-choice">Event to fire on</label>
+			<select id="event-choice" name="category" class="form-control" required>
+				<option value="">Choose an event</option>
+				<option value="blur">Blur</option>
+				<option value="click">Click</option>
+				<option value="change">Change</option>
+				<option value="focus">Focus</option>
+				<option value="keydown">Key Down</option>
+				<option value="keyup">Key Up</option>
+				<option value="scroll">Scroll</option>
+				<option value="submit">Submit</option>
+			</select>
+		</div>
+		<div class="col-md-4">
+			<label data-target="effect-choice-custom">Custom effect on event given</label>
+			<select id="effect-choice-custom" name="category" class="form-control" required>
+				<option value="">Choose an effect</option>
+				<option value="addClass">Add Class</option>
+				<option value="css">Css</option>
+				<option value="empty">Emtpy</option>
+				<option value="fadeIn">Fade In</option>
+				<option value="fadeOut">Fade out</option>
+				<option value="hide">Hide</option>
+				<option value="toggle">Toggle (Hide/Show)</option>
+				<option value="remove">Remove</option>
+				<option value="removeClass">Remove Class</option>
+				<option value="scrollTo">Scroll To</option>
+				<option value="show">Show</option>
+				<option value="slideDown">Slide Down</option>
+				<option value="slideUp">Slide Up</option>
+				<option value="toggleClass">Toggle Class</option>
+				<option value="fadeToggle">Toggle Fade</option>
+				<option value="slideToggle">Toggle Slide</option>
+			</select>
+		</div>
+		<div class="col-md-4">
+			<label data-target="div-choice">Element to activate from</label>
+			<input type="text" id="div-choice" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+		</div>
+	</div>
+	<div class="row">
+		<div id="customization-effects">
+			
+		</div>
+		<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" id="sub-comp-loading" class="waiting" style="display:none; margin-top:32px;" />
+	</div>
+
+	<div class="row" style="margin-top:10px">
+		<div class="col-md-3">
+			<input type="submit" name="highlight-submit" id="highlight-submit" class="button-primary btn-large" value="<?php _e('Create Function', 'el'); ?>"/>
+			<img src="<?php echo admin_url('/images/wpspin_light.gif'); ?>" id="func-loading" class="waiting" style="display:none;" />
+		</div>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	
+	<?php
+}
+
+/***
+*
+*
+***Sub components***/
+
+function menu_change_fade_color_scroll_down_sub_comp(){
+	?>
+	<div class="row">
+		<div class="col-md-4">
+			<label data-target="div-choice">Element to affect</label>
+			<input type="text" id="div-choice" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<ins><strong><p class="text-center">Fade out element</p></strong></ins>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<label data-target="cur-background">Current background to fade from (rgb)</label>
+			<input type="text" id="cur-background" class="form-control" placeholder="e.g: 255, 255, 255" value="x, x, x" data-animation="true" data-toggle="tooltip" data-placement="top" title='Insert values at corresponding x position.' required>
+		</div>
+		<div class="col-md-4">
+			<label data-target="min-fade-opacity">Minimum opacity to fade out to (0-1)</label>
+			<input type="text" id="min-fade-opacity" class="form-control" placeholder="e.g: 0.3" value="" required>
+		</div>
+	</div>
+	<div style="margin-top:10px;" class="row">
+		<div class="col-md-4">
+			<label data-target="start-fade-out">Pixels from top to start fade out</label>
+			<input type="text" id="start-fade-out" class="form-control" placeholder="e.g: 79" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Only numbers, no px after numbers.' required>
+		</div>
+		<div class="col-md-4">
+			<label data-target="stop-fade-out">Pixels from top to complete fade out</label>
+			<input type="text" id="stop-fade-out" class="form-control" placeholder="e.g: 375" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Only numbers, no px after numbers.' required>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<ins><strong><p class="text-center">Fade in element</p></strong></ins>
+		</div>
+	</div>
+	<div  class="row">
+		<div class="col-md-4">
+			<label data-target="start-new-fade-in">Pixels from top to start new fade in</label>
+			<input type="text" id="start-new-fade-in" class="form-control" placeholder="e.g: 79" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Only numbers, no px after numbers.' required>
+		</div>
+		<div class="col-md-4">
+			<label data-target="y-from-top-full-opacity">Pixels from top acheive full opacity on new fade in</label>
+			<input type="text" id="y-from-top-full-opacity" class="form-control" placeholder="e.g: 458" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Only numbers, no px after numbers.' required>
+		</div>
+		<div  class="col-md-4">
+			<label data-target="new-background">New background to fade in (rgb)</label>
+			<input type="text" id="new-background" class="form-control" placeholder="e.g: 255, 255, 255" value="x, x, x" data-animation="true" data-toggle="tooltip" data-placement="top" title='Insert values at corresponding x position.' required>
+		</div>
+	</div>
+	<div class="row">
+		<div style="margin-top:10px;" class="col-md-4">
+			<label data-target="min-new-fade-in-opacity">Opacity to fade in from (0-1)</label>
+			<input type="text" id="min-new-fade-in-opacity" class="form-control" placeholder="e.g: 0.3" value="" required>
+		</div>
+		<div style="margin-top:10px;" class="col-md-4">
+			<label data-target="max-new-fade-in-opacity">Maximum opacity to fade in to (0-1)</label>
+			<input type="text" id="max-new-fade-in-opacity" class="form-control" placeholder="e.g: 0.75" value="" required>
+		</div>
+	</div>
+
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function slide_down_up_toggle_sub_comp(){
+	?>
+	<div class="col-md-4">
+		<label data-target="div-choice-apply">Element to affect</label>
+		<input type="text" id="div-choice-apply" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+	</div>
+	<div class="col-md-4">
+		<label data-target="animation-speed">Animation speed(milliseconds)</label>
+		<input type="text" id="animation-speed" class="form-control" placeholder="e.g: 1000" value="1000" required>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function fade_in_out_toggle_sub_comp(){
+	?>
+	<div class="col-md-4">
+		<label data-target="div-choice-apply">Element to affect</label>
+		<input type="text" id="div-choice-apply" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+	</div>
+	<div class="col-md-4">
+		<label data-target="animation-speed">Animation speed(milliseconds)</label>
+		<input type="text" id="animation-speed" class="form-control" placeholder="e.g: 1000" value="1000" required>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function css_customization_sub_comp() {
+	?>
+	<div class="col-md-4">
+		<label data-target="css-property">Property (e.g: background-color)</label>
+		<input type="text" id="css-property" class="form-control" placeholder="Property" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, do not end property with " : "' required>
+	</div>
+	<div class="col-md-4">
+		<label data-target="property-value">Property value</label>
+		<input type="text" id="property-value" class="form-control" placeholder="Property value" value=""required>
+	</div>
+	<div class="col-md-3">
+		<label data-target="div-choice-apply">Element to affect</label>
+		<input type="text" id="div-choice-apply" class="form-control" placeholder="Id or Class" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+	</div>
+	
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function scroll_to_customization_sub_comp(){
+	?>
+	<div class="col-md-4">
+		<label data-target="scroll-to-div">Element to scroll to</label>
+		<input type="text" id="scroll-to-div" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+	</div>
+	<div class="col-md-4">
+		<label data-target="animation-speed">Animation speed(milliseconds)</label>
+		<input type="text" id="animation-speed" class="form-control" placeholder="e.g: 1000" value="1000" required>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function hide_show_sub_comp(){
+	?>
+	<div class="col-md-4">
+		<label data-target="div-choice-apply">Element to affect</label>
+		<input type="text" id="div-choice-apply" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function remove_empty_sub_comp(){
+	?>
+	<div class="col-md-4">
+		<label data-target="div-choice-apply">Element to affect</label>
+		<input type="text" id="div-choice-apply" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
+
+function class_sub_comp(){
+	?>
+	<div class="col-md-4">
+		<label data-target="div-choice-apply">Element to affect</label>
+		<input type="text" id="div-choice-apply" class="form-control" placeholder="Class or Id" value="" data-animation="true" data-toggle="tooltip" data-placement="top" title='Important, if class, start with a " . " and continue. e.g: .myclass. Or if id, start with a " # " and continue. e.g: #myid.' required>
+	</div>
+	<div class="col-md-4">
+		<label data-target="class">Class</label>
+		<input type="text" id="class" class="form-control" placeholder="e.g: highlight" value="" required>
+	</div>
+
+	<script>
+	//För enabling tooltip on textbox
+	$(function () {
+	    $('[data-toggle="tooltip"]').tooltip()
+	});
+	</script>
+	<?php
+}
